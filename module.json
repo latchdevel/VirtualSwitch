@@ -1,0 +1,68 @@
+{
+    "singleton": false,
+    "dependencies": [],
+    "category": "automation_basic",
+    "author": "Jorge Rivera",
+    "homepage": "https://github.com/latchdevel/VirtualSwitch",
+    "icon": "icon.png",
+    "moduleName": "VirtualSwitch",
+    "version": "1.0.0",
+    "maturity": "stable",
+    "repository": {
+        "type": "git",
+        "source": "https://github.com/latchdevel/VirtualSwitch"
+    },
+    "defaults": {
+        "title": "__m_title__",
+        "description": "__m_descr__",
+        "deviceType": "Door Lock",
+        "toggleDeviceOn": {},
+        "toggleDeviceOff": {}
+    },
+    "schema": {
+        "type": "object",
+        "properties": {
+            "deviceType" : {
+				"type": "string",
+				"enum": ["Binary Switch", "Door Lock"],
+				"required": true
+            }, 
+            "toggleDeviceOn": {
+                "field": "enum",
+                "datasource": "namespaces",
+                "enum": "namespaces:devices_toggleButton:deviceId",
+                "required": true
+            },
+            "toggleDeviceOff": {
+                "field": "enum",
+                "datasource": "namespaces",
+                "enum": "namespaces:devices_toggleButton:deviceId",
+                "required": true
+            }
+        }
+    },
+    "options": {
+        "fields": {
+			"deviceType": {
+                "label": "__m_type__",
+				"type": "select"
+			},
+            "toggleDeviceOn": {
+                "fieldClass": "toggleDeviceOn",
+                "label": "__m_toggle_on__",
+                "type": "select",
+                "datasource": "namespaces",
+                "field": "optionLabels",
+                "optionLabels": "namespaces:devices_toggleButton:deviceName"
+            },
+            "toggleDeviceOff": {
+                "fieldClass": "toggleDeviceOff",
+                "label": "__m_toggle_off__",
+                "type": "select",
+                "datasource": "namespaces",
+                "field": "optionLabels",
+                "optionLabels": "namespaces:devices_toggleButton:deviceName"
+            }
+        }
+    }
+}

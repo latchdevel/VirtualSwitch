@@ -1,0 +1,7 @@
+{
+    "m_title": "Virtual Switch",
+    "m_descr": "Converts two toggle button devices into one virtual switch device.<br>The Virtual Switch device type can be configured as standard 'Binary Switch' or 'Door Lock'.",
+    "m_type": "Switch type",
+    "m_toggle_on": "Button to push when switch to 'open' (on)",
+    "m_toggle_off": "Button to push when switch to 'close' (off)"
+}
