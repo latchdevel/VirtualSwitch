@@ -23,9 +23,9 @@
         "type": "object",
         "properties": {
             "deviceType" : {
-				"type": "string",
-				"enum": ["Binary Switch", "Door Lock"],
-				"required": true
+                "type": "string",
+                "enum": ["Binary Switch", "Door Lock"],
+                "required": true
             }, 
             "toggleDeviceOn": {
                 "field": "enum",
@@ -43,10 +43,10 @@
     },
     "options": {
         "fields": {
-			"deviceType": {
+            "deviceType": {
                 "label": "__m_type__",
-				"type": "select"
-			},
+                "type": "select"
+            },
             "toggleDeviceOn": {
                 "fieldClass": "toggleDeviceOn",
                 "label": "__m_toggle_on__",

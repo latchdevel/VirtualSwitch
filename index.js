@@ -46,24 +46,24 @@ VirtualSwitch.prototype.init = function (config) {
         //level =  "off";
     }
 
-	var defaults = {
-		metrics: {
-			title: self.getInstanceTitle(),
-			icon: icon,
+    var defaults = {
+        metrics: {
+            title: self.getInstanceTitle(),
+            icon: icon,
             level: level
-		}
-	};
+        }
+    };
  
-	var overlay = {
-			deviceType: deviceType,
-			probeType: probeType
-	};
+    var overlay = {
+            deviceType: deviceType,
+            probeType: probeType
+    };
     
-	this.vDev = this.controller.devices.create({
-		deviceId: this.getName() + "_" + this.id,
-		defaults: defaults,
-		overlay: overlay,
-		handler: function(command, args) {
+    this.vDev = this.controller.devices.create({
+        deviceId: this.getName() + "_" + this.id,
+        defaults: defaults,
+        overlay: overlay,
+        handler: function(command, args) {
 
             // Get device type to support on/open and off/close
             var vDevType = deviceType;
@@ -73,7 +73,7 @@ VirtualSwitch.prototype.init = function (config) {
 
             if (command === 'update') {
                 // Do nothing
-			}
+            }
             else if ((command === "on") || (command === "open")) {
                 console.log("Virtual Switch: '" + deviceName + "' command: 'on/open' ");
                 self.controller.devices.get(self.config.toggleDeviceOn).performCommand("on");
@@ -98,15 +98,15 @@ VirtualSwitch.prototype.init = function (config) {
             }
         },
 
-		moduleId: this.id
-	});
+        moduleId: this.id
+    });
 };
 
 VirtualSwitch.prototype.stop = function () {
-	if (this.vDev) {
-		this.controller.devices.remove(this.vDev.id);
-		this.vDev = null;
-	}
+    if (this.vDev) {
+        this.controller.devices.remove(this.vDev.id);
+        this.vDev = null;
+    }
 
     VirtualSwitch.super_.prototype.stop.call(this);
 };
