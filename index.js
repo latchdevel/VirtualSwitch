@@ -65,6 +65,10 @@ VirtualSwitch.prototype.init = function (config) {
 		overlay: overlay,
 		handler: function(command, args) {
 
+            // Get device type to support on/open and off/close
+            var vDevType = deviceType;
+
+            // Get device name for detailed error notification
             var deviceName = this.get("metrics:title") == "" ? "Unknow device" : this.get("metrics:title");
 
             if (command === 'update') {
@@ -73,12 +77,20 @@ VirtualSwitch.prototype.init = function (config) {
             else if ((command === "on") || (command === "open")) {
                 console.log("Virtual Switch: '" + deviceName + "' command: 'on/open' ");
                 self.controller.devices.get(self.config.toggleDeviceOn).performCommand("on");
-                this.set("metrics:level", command );
+                if (vDevType === "doorlock"){
+                    this.set("metrics:level", "open" );
+                }else{
+                    this.set("metrics:level", "on" );
+                }
             }
             else if ((command === "off") || (command === "close"))  {
                 console.log("Virtual Switch: '" + deviceName + "' command: 'off/close' ");
                 self.controller.devices.get(self.config.toggleDeviceOff).performCommand("on");
-                this.set("metrics:level", command );
+                if (vDevType === "doorlock"){
+                    this.set("metrics:level", "close" );
+                }else{
+                    this.set("metrics:level", "off" );
+                }
             }
             else {
                 //console.log("Virtual Switch: '" + deviceName + "' command unknow: '" + command + "'" );
